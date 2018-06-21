@@ -21,6 +21,8 @@ import com.example.spring.req_domain.Req_Role;
 import com.example.spring.service.ThridPartyApiSerivce;
 import com.example.spring.util.ResponseUtil;
 
+import io.swagger.annotations.ApiOperation;
+
 
 @RestController
 public class ThridPartyApi {
@@ -35,7 +37,7 @@ public class ThridPartyApi {
 		
 	}
 	
-	
+	@ApiOperation(value = "Api for getMyWalletUsers", response = ResponseEntity.class)
 	@GetMapping(value ="/api/v1/testApi",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Object> getMyWalletUsers(){
 		
@@ -50,6 +52,8 @@ public class ThridPartyApi {
 		return ResponseUtil.successResponse("Successfully get My Wallet Users ", map, HttpStatus.OK);
 	}
 	
+	
+	@ApiOperation(value = "Api for roleBinding", response = ResponseEntity.class)
 	@PostMapping(path="/api/v1/role",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Object> roleBinding(@Valid @RequestBody Req_Role reqData,BindingResult bindingResult){
 		
@@ -69,7 +73,7 @@ public class ThridPartyApi {
 			return ResponseUtil.successResponse("Successfully get My Wallet Users ", map, HttpStatus.CREATED);
 		}
 	
-	
+	@ApiOperation(value = "Api for getByEmail", response = ResponseEntity.class)
 	@GetMapping(value="/api/v1/userEmail/{id}",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Object> getByEmail(@PathVariable String email){
 
